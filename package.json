@@ -1,0 +1,43 @@
+{
+  "name": "barbary",
+  "version": "0.0.1",
+  "description": "Another Node.js logger",
+  "main": "dist/lib/main.js",
+  "types": "dist/lib/main.d.ts",
+  "author": "Mgen (https://www.mgenware.com)",
+  "homepage": "https://github.com/mgenware/barbary",
+  "bugs": "https://github.com/mgenware/barbary/issues",
+  "keywords": [
+    "task runner"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mgenware/barbary.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chalk": "^0.4.31",
+    "@types/mocha": "*",
+    "@types/node": "*",
+    "copyfiles": "*",
+    "mocha": "*",
+    "typescript": "*"
+  },
+  "scripts": {
+    "test": "yarn run compile && yarn run copy && mocha \"dist/test/*.js\"",
+    "dev_test": "mocha \"dist/test/*.js\"",
+    "build": "tsc && yarn test",
+    "compile": "tsc",
+    "dev": "tsc -w",
+    "prepublishOnly": "yarn run test",
+    "lint": "tslint --project .",
+    "copy": "copyfiles \"test/data/**/*.*\" \"dist\""
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "lodash.padend": "^4.6.1"
+  }
+}
