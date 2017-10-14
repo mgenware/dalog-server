@@ -8,7 +8,7 @@
   "homepage": "https://github.com/mgenware/barbary",
   "bugs": "https://github.com/mgenware/barbary/issues",
   "keywords": [
-    "task runner"
+    "logger", "console"
   ],
   "repository": {
     "type": "git",
