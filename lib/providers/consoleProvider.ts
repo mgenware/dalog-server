@@ -16,13 +16,16 @@ levelFuncMap[LogLevel.Verbose] = chalk.dim;
 levelFuncMap[LogLevel.Warning] = chalk.yellow;
 
 export default class DefaultProvider extends ProviderBase {
-  constructor(public enableColor: boolean) {
+  showColor: boolean;
+
+  constructor({showColor}: {showColor?: boolean} = {}) {
     super();
+    this.showColor = showColor || false;
   }
 
   log(level: number, message: string): void {
     const formatted = this.formatContent(level, message);
-    if (this.enableColor) {
+    if (this.showColor) {
       console.log((this.levelToFunc(level))(formatted));
     } else {
       console.log(formatted);
