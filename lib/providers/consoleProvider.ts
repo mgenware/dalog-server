@@ -37,7 +37,7 @@ export default class DefaultProvider extends ProviderBase {
       console.log((this.levelToFunc(level, false))(message));
     } else {
       // tslint:disable-next-line: no-console
-      console.log(`${head}  ${time}\n${message}`);
+      console.log(`${head}  ${time}\n  ${message}`);
     }
   }
 
