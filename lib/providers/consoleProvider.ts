@@ -26,13 +26,17 @@ export default class DefaultProvider extends ProviderBase {
   log(entry: Entry): void {
     const {level, category, message} = entry;
 
-    const head = `${this.levelToStr(level)} ${category}`;
+    const head = `[${this.levelToStr(level)}] ${category}`;
     const time = this.formatTime(entry.time);
+
     if (this.showColor) {
       process.stdout.write((this.levelToFunc(level, true))(head));
+      // tslint:disable-next-line: no-console
       console.log('  ' + time);
+      // tslint:disable-next-line: no-console
       console.log((this.levelToFunc(level, false))(message));
     } else {
+      // tslint:disable-next-line: no-console
       console.log(`${head}  ${time}\n${message}`);
     }
   }
