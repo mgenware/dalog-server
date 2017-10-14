@@ -1,6 +1,6 @@
 {
   "name": "barbary",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Another Node.js logger",
   "main": "dist/lib/main.js",
   "types": "dist/lib/main.d.ts",
