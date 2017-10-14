@@ -37,7 +37,6 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "chalk": "^2.1.0",
-    "lodash.padend": "^4.6.1"
+    "chalk": "^2.1.0"
   }
 }

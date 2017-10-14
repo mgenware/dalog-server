@@ -1,11 +1,10 @@
 import ProviderBase from '../providerBase';
 import LogLevel from '../logLevel';
 import * as chalk from 'chalk';
-const padEnd = require('lodash.padend');
 
 const levelStrMap: {[key: number]: string|null} = {};
 levelStrMap[LogLevel.Info] = 'INFO';
-levelStrMap[LogLevel.Error] = 'ERR';
+levelStrMap[LogLevel.Error] = 'ERR!';
 levelStrMap[LogLevel.Verbose] = 'VERB';
 levelStrMap[LogLevel.Warning] = 'WARN';
 
@@ -49,8 +48,7 @@ export default class DefaultProvider extends ProviderBase {
   }
 
   private formatContent(category: string, level: number, message: string): string {
-    let typeStr = `[${this.levelToStr(level)}]`;
-    typeStr = padEnd(typeStr, 6);
+    const typeStr = `[${this.levelToStr(level)}]`;
     return `${typeStr} ${category}\n${message}`;
   }
 }
