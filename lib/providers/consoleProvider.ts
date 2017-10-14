@@ -32,7 +32,7 @@ export default class DefaultProvider extends ProviderBase {
     if (this.showColor) {
       process.stdout.write((this.levelToFunc(level, true))(head));
       // tslint:disable-next-line: no-console
-      console.log('  ' + time);
+      console.log(chalk.dim('  ' + time));
       // tslint:disable-next-line: no-console
       console.log((this.levelToFunc(level, false))(message));
     } else {
