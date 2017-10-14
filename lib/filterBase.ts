@@ -1,3 +1,3 @@
 export default abstract class FilterBase {
-  abstract shouldLog(level: number, message: string): boolean;
+  abstract shouldLog(category: string, level: number, message: string): boolean;
 }

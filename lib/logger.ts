@@ -12,23 +12,23 @@ export default class Logger {
     this._provider = provider;
   }
 
-  log(level: number, data: any) {
-    this._provider.log(level, JSON.stringify(data));
+  log(category: string, level: number, data: any) {
+    this._provider.log(category, level, JSON.stringify(data));
   }
 
-  error(data: any) {
-    this.log(LogLevel.Error, data);
+  error(category: string, data: any) {
+    this.log(category, LogLevel.Error, data);
   }
 
-  warning(data: any) {
-    this.log(LogLevel.Warning, data);
+  warning(category: string, data: any) {
+    this.log(category, LogLevel.Warning, data);
   }
 
-  info(data: any) {
-    this.log(LogLevel.Info, data);
+  info(category: string, data: any) {
+    this.log(category, LogLevel.Info, data);
   }
 
-  verbose(data: any) {
-    this.log(LogLevel.Verbose, data);
+  verbose(category: string, data: any) {
+    this.log(category, LogLevel.Verbose, data);
   }
 }

@@ -23,8 +23,8 @@ export default class DefaultProvider extends ProviderBase {
     this.showColor = showColor || false;
   }
 
-  log(level: number, message: string): void {
-    const formatted = this.formatContent(level, message);
+  log(category: string, level: number, message: string): void {
+    const formatted = this.formatContent(category, level, message);
     if (this.showColor) {
       console.log((this.levelToFunc(level))(formatted));
     } else {
@@ -48,9 +48,9 @@ export default class DefaultProvider extends ProviderBase {
     return (str: string) => str;
   }
 
-  private formatContent(level: number, message: string): string {
+  private formatContent(category: string, level: number, message: string): string {
     let typeStr = `[${this.levelToStr(level)}]`;
     typeStr = padEnd(typeStr, 6);
-    return `${typeStr} ${message}`;
+    return `${typeStr} ${category}\n${message}`;
   }
 }
