@@ -1,6 +1,7 @@
 import LogLevel from './logLevel';
 import FilterBase from './filterBase';
 import ProviderBase from './providerBase';
+import Entry from './entry';
 
 export default class Logger {
   private _provider: ProviderBase;
@@ -13,7 +14,8 @@ export default class Logger {
   }
 
   log(category: string, level: number, data: any) {
-    this._provider.log(category, level, JSON.stringify(data));
+    const entry = new Entry(category, level, data);
+    this._provider.log(entry);
   }
 
   error(category: string, data: any) {

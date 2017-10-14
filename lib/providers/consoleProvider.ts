@@ -1,5 +1,6 @@
 import ProviderBase from '../providerBase';
 import LogLevel from '../logLevel';
+import Entry from '../entry';
 import * as chalk from 'chalk';
 
 const levelStrMap: {[key: number]: string|null} = {};
@@ -22,12 +23,17 @@ export default class DefaultProvider extends ProviderBase {
     this.showColor = showColor || false;
   }
 
-  log(category: string, level: number, message: string): void {
-    const formatted = this.formatContent(category, level, message);
+  log(entry: Entry): void {
+    const {level, category, message} = entry;
+
+    const head = `${this.levelToStr(level)} ${category}`;
+    const time = this.formatTime(entry.time);
     if (this.showColor) {
-      console.log((this.levelToFunc(level))(formatted));
+      process.stdout.write((this.levelToFunc(level, true))(head));
+      console.log('  ' + time);
+      console.log((this.levelToFunc(level, false))(message));
     } else {
-      console.log(formatted);
+      console.log(`${head}  ${time}\n${message}`);
     }
   }
 
@@ -39,16 +45,15 @@ export default class DefaultProvider extends ProviderBase {
     return `${level}`;
   }
 
-  private levelToFunc(level: number): any {
+  private levelToFunc(level: number, bold: boolean): any {
     const predefined = levelFuncMap[level];
     if (predefined) {
-      return predefined;
+      return bold ? predefined.bold : predefined;
     }
     return (str: string) => str;
   }
 
-  private formatContent(category: string, level: number, message: string): string {
-    const typeStr = `[${this.levelToStr(level)}]`;
-    return `${typeStr} ${category}\n${message}`;
+  private formatTime(d: Date): string {
+    return `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}.${d.getMilliseconds()}`;
   }
 }
