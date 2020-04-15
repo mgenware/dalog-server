@@ -1,4 +1,3 @@
-# barbary
-Another Node.js logger.
+# dalog-server
 
-<img src="assets/screenshot.png" width="900" height="768">
+A log server for debugging
