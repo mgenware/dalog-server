@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { Entry, newEntry } from './entry';
 const app = express();
-const port = 3000;
+const port = 3333;
 
 let entries: Entry[] = [];
 
