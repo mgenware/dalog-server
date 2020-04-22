@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { Entry, newEntry } from './entry';
+import * as internalIP from 'internal-ip';
 const app = express();
 const port = 3333;
 
@@ -20,6 +21,12 @@ app.post('/log', (req, res) => {
 app.post('/fetch', (_, res) => {
   res.status(200).json(entries);
   entries = [];
+});
+
+app.post('/info', async (_, res) => {
+  const ipv4 = (await internalIP.v4()) || '';
+  const ipv6 = (await internalIP.v6()) || '';
+  res.status(200).json({ ipv4, ipv6 });
 });
 
 app.get('/', (_, res) => {
