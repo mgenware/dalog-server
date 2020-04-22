@@ -45,11 +45,9 @@ export class AppView extends LitElement {
 
   private startFetcher() {
     pForever(async () => {
-      const entries = fetchJSON<Entry[]>('fetch');
+      const entries = await fetchJSON<Entry[]>('fetch');
       if (Array.isArray(entries)) {
-        for (const e of entries) {
-          this.entries.push(e);
-        }
+        this.entries = [...this.entries, ...entries];
       } else {
         throw new Error(`Got malformed log: ${JSON.stringify(entries)}`);
       }
