@@ -18,9 +18,7 @@ app.post('/log', (req, res) => {
 });
 
 app.post('/fetch', (_, res) => {
-  res.status(200).json({
-    entries,
-  });
+  res.status(200).json(entries);
   entries = [];
 });
 
