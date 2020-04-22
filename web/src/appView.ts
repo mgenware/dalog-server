@@ -4,8 +4,8 @@ import { Entry } from './entry';
 import delay from 'delay';
 import pForever from 'p-forever';
 import InfoResp from './infoResp';
-
-const serverPort = '3333';
+import * as defs from './defs';
+import { fetchJSON } from './http';
 
 @customElement('app-view')
 export class AppView extends LitElement {
@@ -25,7 +25,7 @@ export class AppView extends LitElement {
     return html`
       <h1>dalog server</h1>
       <p>
-        IPv4 ${this.ipv4}:${serverPort} IPv6 ${this.ipv6}:${serverPort}
+        IPv4 ${this.ipv4}:${defs.port} IPv6 ${this.ipv6}:${defs.port}
       </p>
       <div>
         <ul>
@@ -36,13 +36,7 @@ export class AppView extends LitElement {
   }
 
   private async init() {
-    const resp = await fetch('http://localhost:3333/info', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const info = (await resp.json()) as InfoResp;
+    const info = await fetchJSON<InfoResp>('info');
     this.ipv4 = info.ipv4;
     this.ipv6 = info.ipv6;
     this.initialized = true;
@@ -51,13 +45,7 @@ export class AppView extends LitElement {
 
   private startFetcher() {
     pForever(async () => {
-      const resp = await fetch('http://localhost:3333/fetch', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const entries = (await resp.json()) as Entry[];
+      const entries = fetchJSON<Entry[]>('fetch');
       if (Array.isArray(entries)) {
         for (const e of entries) {
           this.entries.push(e);
