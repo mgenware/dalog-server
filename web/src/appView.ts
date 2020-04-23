@@ -24,29 +24,33 @@ export class AppView extends BaseElement {
       return html`Initializing dalog server...`;
     }
     return html`
-      <h1>dalog server</h1>
-      <p>
-        IPv4 ${this.ipv4}:${defs.port} IPv6 ${this.ipv6}:${defs.port}
-      </p>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Message</th>
-            <th>Timestamp</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${this.entries.map(
-            (e) => html`
-              <tr style="color: ${entryToColor(e) || 'black'}">
-                <td>${e.message}</td>
-                <td>${new Date(e.time).toTimeString()}</td>
+      <section class="section">
+        <div class="content">
+          <h1>dalog server</h1>
+          <p>
+            IPv4 ${this.ipv4}:${defs.port} IPv6 ${this.ipv6}:${defs.port}
+          </p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Message</th>
+                <th>Timestamp</th>
               </tr>
-            `,
-          )}
-        </tbody>
-        >
-      </table>
+            </thead>
+            <tbody>
+              ${this.entries.map(
+                (e) => html`
+                  <tr style="color: ${entryToColor(e) || 'black'}">
+                    <td>${e.message}</td>
+                    <td>${new Date(e.time).toTimeString()}</td>
+                  </tr>
+                `,
+              )}
+            </tbody>
+            >
+          </table>
+        </div>
+      </section>
     `;
   }
 
