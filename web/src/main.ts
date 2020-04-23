@@ -1,3 +1,6 @@
 import './appView';
 
-document.body.innerHTML = '<app-view></app-view>';
+const element = document.getElementById('main-content');
+if (element) {
+  element.innerHTML = '<app-view></app-view>';
+}

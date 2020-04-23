@@ -1,13 +1,12 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import { Entry, newEntry } from './entry';
 import * as internalIP from 'internal-ip';
 import * as fs from 'fs';
 import * as nodepath from 'path';
 const app = express();
 const port = 3333;
 
-let entries: Entry[] = [];
+let entries: unknown[] = [];
 const homeHTML = fs.readFileSync(nodepath.join(__dirname, 'home.html'), 'utf8');
 
 app.use(bodyParser.json());
@@ -15,8 +14,7 @@ app.use('/static', express.static('../web/dist'));
 
 app.post('/log', (req, res) => {
   if (req.body) {
-    const entry = newEntry(req.body);
-    entries.push(entry);
+    entries.push(req.body);
   }
   res.status(200);
 });

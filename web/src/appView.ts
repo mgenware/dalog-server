@@ -29,11 +29,18 @@ export class AppView extends BaseElement {
         IPv4 ${this.ipv4}:${defs.port} IPv6 ${this.ipv6}:${defs.port}
       </p>
       <table class="table">
+        <thead>
+          <tr>
+            <th>Message</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
         <tbody>
           ${this.entries.map(
             (e) => html`
               <tr style="color: ${entryToColor(e) || 'black'}">
                 <td>${e.message}</td>
+                <td>${new Date(e.time).toTimeString()}</td>
               </tr>
             `,
           )}
