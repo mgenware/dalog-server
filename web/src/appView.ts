@@ -1,14 +1,15 @@
-import { html, customElement, LitElement } from 'lit-element';
+import { html, customElement } from 'lit-element';
 import * as lp from 'lit-props';
-import { Entry } from './entry';
+import { Entry, entryToColor } from './entry';
 import delay from 'delay';
 import pForever from 'p-forever';
 import InfoResp from './infoResp';
 import * as defs from './defs';
 import { fetchJSON } from './http';
+import BaseElement from 'ui/baseElement';
 
 @customElement('app-view')
-export class AppView extends LitElement {
+export class AppView extends BaseElement {
   @lp.array entries: Entry[] = [];
   @lp.bool initialized = false;
   @lp.string ipv4 = '';
@@ -27,11 +28,18 @@ export class AppView extends LitElement {
       <p>
         IPv4 ${this.ipv4}:${defs.port} IPv6 ${this.ipv6}:${defs.port}
       </p>
-      <div>
-        <ul>
-          ${this.entries.map((e) => html` <div>${e.message}</div> `)}
-        </ul>
-      </div>
+      <table class="table">
+        <tbody>
+          ${this.entries.map(
+            (e) => html`
+              <tr style="color: ${entryToColor(e) || 'black'}">
+                <td>${e.message}</td>
+              </tr>
+            `,
+          )}
+        </tbody>
+        >
+      </table>
     `;
   }
 

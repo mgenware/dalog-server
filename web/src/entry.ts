@@ -28,3 +28,15 @@ export function newEntry(obj: any): Entry {
   }
   return entry;
 }
+
+export function entryToColor(entry: Entry): string {
+  switch (entry.level) {
+    case Level.debug:
+      return '#A4A4A4';
+    case Level.warning:
+      return '#FE9A2E';
+    case Level.error:
+      return '#FE2E2E';
+  }
+  return '';
+}

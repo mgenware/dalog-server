@@ -23,7 +23,7 @@ const tasks = [
   {
     input: 'src/main.ts',
     output: {
-      name: 'fx61',
+      name: 'dalog',
       file: 'dist/main.js',
       format: 'umd',
       exports: 'named',
