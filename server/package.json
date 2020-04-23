@@ -18,12 +18,13 @@
   "scripts": {
     "test": "yarn run clean && yarn run compile && yarn run lint && yarn run t",
     "t": "mocha --require source-map-support/register dist_tests/**/*.test.js",
-    "build": "cross-env NODE_ENV=production yarn test",
+    "build": "cross-env NODE_ENV=production yarn run copyfiles && yarn test",
     "compile": "tsc -b tests",
-    "dev": "cross-env NODE_ENV=development yarn run clean && tsc -b tests -w",
+    "dev": "cross-env NODE_ENV=development yarn run clean && yarn run copyfiles && tsc -b tests -w",
     "prepublishOnly": "yarn run build",
     "lint": "eslint --max-warnings 0 --ext .ts src/ tests/",
-    "clean": "del-cli dist && del-cli dist_tests"
+    "clean": "del-cli dist && del-cli dist_tests",
+    "copyfiles": "cpy src/home.html dist"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -32,7 +33,8 @@
     "/dist/**/*.js",
     "/dist/**/*.ts",
     "/dist/**/*.css",
-    "/dist/**/*.map"
+    "/dist/**/*.map",
+    "/dist/**/*.html"
   ],
   "dependencies": {
     "@types/mocha": "^7.0.2",
@@ -53,6 +55,7 @@
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
     "@types/express": "^4.17.6",
-    "@types/node-fetch": "^2.5.6"
+    "@types/node-fetch": "^2.5.6",
+    "cpy-cli": "^3.1.0"
   }
 }
