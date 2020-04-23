@@ -2,6 +2,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import { terser } from 'rollup-plugin-terser';
+import litcss from 'rollup-plugin-lit-css-ex';
 
 const isProd = process.env.NODE_ENV == 'production';
 
@@ -10,7 +11,8 @@ const plugins = [
     browser: true,
   }),
   commonjs(),
-  typescript({ cacheRoot: require('unique-temp-dir')() }),
+  litcss(),
+  typescript(),
 ];
 
 if (isProd) {
