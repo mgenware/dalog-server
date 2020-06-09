@@ -5,12 +5,15 @@
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "author": "Mgen (https://www.mgenware.com)",
-  "homepage": "https://github.com/mgenware/layit",
-  "bugs": "https://github.com/mgenware/layit/issues",
+  "homepage": "https://github.com/mgenware/dalog-server",
+  "bugs": "https://github.com/mgenware/dalog-server/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mgenware/layit.git"
+    "url": "https://github.com/mgenware/dalog-server.git"
   },
+  "keywords": [
+    "logger"
+  ],
   "license": "MIT",
   "scripts": {
     "r": "daizong",
