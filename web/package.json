@@ -15,24 +15,24 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "bulma": "^0.8.2",
+    "bulma": "^0.9.0",
     "delay": "^4.3.0",
     "lit-element": "^2.3.1",
     "lit-props": "^1.0.0",
     "p-forever": "^2.1.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.29.0",
-    "@typescript-eslint/parser": "^2.29.0",
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
     "cross-env": "^7.0.2",
-    "del-cli": "^3.0.0",
-    "eslint": "^6.8.0",
-    "rollup": "^2.7.2",
+    "del-cli": "^3.0.1",
+    "eslint": "^7.2.0",
+    "rollup": "^2.15.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-lit-css-ex": "^2.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^5.3.0",
-    "rollup-plugin-typescript2": "^0.27.0",
-    "typescript": "^3.8.3"
+    "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "typescript": "^3.9.5"
   }
 }
