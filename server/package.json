@@ -40,7 +40,7 @@
     "express": "^4.17.1",
     "internal-ip": "^6.0.0",
     "mocha": "^7.2.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "source-map-support": "^0.5.19",
     "typescript": "^3.9.5"
   },
